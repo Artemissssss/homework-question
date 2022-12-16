@@ -5,9 +5,11 @@ import './App.css';
 function App() {
 const [Question, setQuestion] = useState('');
 const questionCont = useRef();
+const questionIn = useRef()
 useEffect(() => {
   setTimeout(() => {
     questionCont.current.style.display = "flex"  
+    questionIn.current.focus()
   }, 1000);
 },[]);
 let changeFinder = (event) =>{
@@ -38,7 +40,7 @@ if(Question.toLowerCase() === "так"){
     </div>
       <div className='question-cont' ref={questionCont}>
         <label htmlFor="question">Вам подобається React?</label>
-        <input onChange={changeFinder} type="text" name="question" id="question"/>
+        <input ref={questionIn} onChange={changeFinder} type="text" name="question" id="question"/>
       </div>
     </>
   );
